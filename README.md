@@ -2,8 +2,6 @@
 
 Sistema web responsivo para gerenciamento e controle de eventos, desenvolvido como projeto prático para o **Trabalho II da disciplina de Programação Web**.
 
----
-
 ## 👥 Integrantes (Grupo 8)
 * Ana Luiza Sousa Silva
 * Heitor Ribeiro de Andrade
@@ -11,15 +9,11 @@ Sistema web responsivo para gerenciamento e controle de eventos, desenvolvido co
 * Silvia Lopes Lima Nobre
 * Vitor César Correira de Almeida
 
----
-
 ## 🛠️ Tecnologias Utilizadas
 * **HTML5:** Estruturação semântica das páginas e formulários.
 * **CSS3:** Estilização moderna utilizando variáveis, Grids, Flexbox e Media Queries para total responsividade.
 * **JavaScript (Vanilla):** Lógica de negócios, manipulação dinâmica do DOM, validações e gerenciamento de estado.
 * **LocalStorage:** Persistência de dados local tanto para a sessão do usuário quanto para o banco de dados de eventos.
-
----
 
 ## 🚀 Funcionalidades do Sistema
 
@@ -36,8 +30,6 @@ Sistema web responsivo para gerenciamento e controle de eventos, desenvolvido co
 * **Busca em Tempo Real:** Filtro inteligente por `nome`, `responsável` ou `local` à medida que o usuário digita.
 * **Regra de Negócio de Unicidade:** O sistema impede o cadastro ou edição de eventos que possuam o mesmo nome (validação *case-insensitive*).
 * **Feedback ao Usuário (Toast):** Sistema de notificações flutuantes temporizadas para ações bem-sucedidas ou erros.
-
----
 
 ## 🧠 Principais Aprendizados Práticos
 
@@ -62,8 +54,6 @@ O desenvolvimento deste projeto permitiu ao grupo consolidar diversos conceitos 
   * `.find()` para buscar credenciais de login corretas e carregar dados para edição.
   * `.filter()` para criar mecanismos de busca eficientes e remoção de itens.
   * `.map()` acoplado a *Template Literals* para renderizar de forma performática as linhas da tabela em HTML.
-
----
 
 ## 📂 Estrutura de Arquivos
 
