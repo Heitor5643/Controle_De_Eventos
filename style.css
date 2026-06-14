@@ -129,7 +129,52 @@ button {
 
 .tabela-wrap { overflow-x: auto; }
 
-table { width: 100%; border-collapse: collapse; background: white; }
+.eventos-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:20px;
+}
+
+.card-evento{
+  background:white;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 4px 12px rgba(0,0,0,.1);
+  transition:.3s;
+}
+
+.card-evento:hover{
+  transform:translateY(-5px);
+}
+
+.card-evento img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+}
+
+.card-conteudo{
+  padding:16px;
+}
+
+.card-conteudo h3{
+  margin-bottom:10px;
+}
+
+.card-info{
+  margin:6px 0;
+  color:#555;
+}
+
+.card-acoes{
+  margin-top:15px;
+  display:flex;
+  gap:10px;
+}
+
+.card-acoes button{
+  flex:1;
+}
 
 th, td { padding: 13px; border-bottom: 1px solid #eee8de; text-align: left; vertical-align: top; }
 

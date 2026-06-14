@@ -136,17 +136,69 @@ function filtro(ev) {
 function render() {
   const lista = eventos.filter(filtro);
   $('resumo').textContent = `${eventos.length} registro(s) no LocalStorage.`;
-  $('lista').innerHTML = lista.length ? lista.map(linha).join('') : '<tr><td colspan="7">Nenhum registro encontrado.</td></tr>';
-}
-function linha(ev) {
-  const img = ev.imagem
-  ? `<img src="${ev.imagem}"
-          alt="Evento"
-          class="thumb-evento">`
-  : 'N/A';
-  return `<tr><td>${ev.nome}<small>${ev.status}</small></td><td>${ev.responsavel}</td><td>${nulo(ev.telefone)}</td><td>${dataBR(ev.data)}</td><td>${nulo(ev.local)}</td><td>${img}</td><td><button onclick="editar('${ev.id}')">&#9998; Editar</button><button onclick="excluir('${ev.id}')">&#10006; Excluir</button></td></tr>`;
-}
+  $('lista').innerHTML =
+lista.length
+? lista.map(linha).join('')
+: '<p>Nenhum evento encontrado.</p>';
+function linha(ev){
 
+  const imagem =
+    ev.imagem ||
+    "https://via.placeholder.com/400x200?text=Evento";
+
+  return `
+    <div class="card-evento">
+
+      <img
+        src="${imagem}"
+        alt="${ev.nome}"
+      >
+
+      <div class="card-conteudo">
+
+        <h3>${ev.nome}</h3>
+
+        <p class="card-info">
+          👤 <strong>Responsável:</strong>
+          ${ev.responsavel}
+        </p>
+
+        <p class="card-info">
+          📞 <strong>Telefone:</strong>
+          ${nulo(ev.telefone)}
+        </p>
+
+        <p class="card-info">
+          📅 <strong>Data:</strong>
+          ${dataBR(ev.data)}
+        </p>
+
+        <p class="card-info">
+          📍 <strong>Local:</strong>
+          ${nulo(ev.local)}
+        </p>
+
+        <p class="card-info">
+          🎯 <strong>Status:</strong>
+          ${ev.status}
+        </p>
+
+        <div class="card-acoes">
+          <button onclick="editar('${ev.id}')">
+            ✏️ Editar
+          </button>
+
+          <button onclick="excluir('${ev.id}')">
+            🗑️ Excluir
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  `;
+}
+}
 $('busca').oninput = render;
 atualizarMenu();
-ir(usuario() ? 'list' : 'home');
+ir(usuario() ? 'list' : 'home'); 
