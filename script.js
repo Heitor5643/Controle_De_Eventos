@@ -139,7 +139,11 @@ function render() {
   $('lista').innerHTML = lista.length ? lista.map(linha).join('') : '<tr><td colspan="7">Nenhum registro encontrado.</td></tr>';
 }
 function linha(ev) {
-  const img = ev.imagem ? `<a href="${ev.imagem}" target="_blank">abrir</a>` : 'N/A';
+  const img = ev.imagem
+  ? `<img src="${ev.imagem}"
+          alt="Evento"
+          class="thumb-evento">`
+  : 'N/A';
   return `<tr><td>${ev.nome}<small>${ev.status}</small></td><td>${ev.responsavel}</td><td>${nulo(ev.telefone)}</td><td>${dataBR(ev.data)}</td><td>${nulo(ev.local)}</td><td>${img}</td><td><button onclick="editar('${ev.id}')">&#9998; Editar</button><button onclick="excluir('${ev.id}')">&#10006; Excluir</button></td></tr>`;
 }
 

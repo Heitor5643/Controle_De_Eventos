@@ -62,3 +62,19 @@ O desenvolvimento deste projeto permitiu ao grupo consolidar diversos conceitos 
 ├── style.css    # Identidade visual, responsividade e animações (Ex: Toast)
 ├── script.js    # Motor do sistema (Lógica do CRUD, Autenticação e LocalStorage)
 └── README.md    # Documentação oficial do projeto
+
+## ✨ Melhorias Adicionais
+
+Após a conclusão dos requisitos obrigatórios do trabalho, foram realizadas algumas melhorias na interface e experiência do usuário:
+
+- Adição de rodapsones visuais nos botões de edição e exclusão.
+- Implementação de animações nos cards da página inicial.
+- Exibição da data atual na tela inicial.
+- Mensagem personalizada de boas-vindas para usuários autenticados.
+- Melhoria dos placeholders dos campos dos formulários.
+- Adição de contador de caracteres no campo de nome do evento.
+- Destaque visual para os diferentes status dos eventos.
+- Inclusão de um pre visualizador de imagens
+- Atualização da descrição da página inicial para melhor apresentação do sistema.
+
+Essas melhorias foram desenvolvidas com foco em usabilidade, organização visual e experiência do usuário, sem alterar as funcionalidades principais do CRUD.
