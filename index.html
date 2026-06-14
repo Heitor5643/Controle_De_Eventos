@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EventFlow - Controle de Eventos</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <aside class="menu">
+    <strong>EventFlow</strong>
+    <small>Grupo 8 - Controle de Eventos</small>
+    <button data-page="home">Inicio</button>
+    <button class="guest" data-page="login">Login</button>
+    <button class="auth" data-page="form">Cadastrar</button>
+    <button class="auth" data-page="list">Listar</button>
+    <button class="auth sair" id="sair">Sair</button>
+  </aside>
+
+  <main>
+    <section id="home" class="page active">
+      <span class="tag">Trabalho II - Programacao Web</span>
+      <h1>Controle de Eventos</h1>
+      <p>Um sistema simples para cadastrar, listar, editar e excluir eventos usando HTML, CSS, JavaScript e LocalStorage.</p>
+      <div class="cards">
+        <div><b>Create</b><span>Cadastrar eventos</span></div>
+        <div><b>Read</b><span>Visualizar registos</span></div>
+        <div><b>Update</b><span>Editar informacoes</span></div>
+        <div><b>Delete</b><span>Excluir eventos</span></div>
+      </div>
+      <button class="principal" data-page="login">Entrar no sistema</button>
+    </section>
+
+    <section id="login" class="page">
+      <h2>Login</h2>
+      <p class="sub">Crie um usuario e use esses dados para entrar.</p>
+      <div class="grid2">
+        <form id="formCriar" class="box">
+          <h3>Cadastrar usuario</h3>
+          <label>Nome <input id="cadNome" required placeholder="Seu nome" /></label>
+          <label>Email <input id="cadEmail" type="email" required placeholder="email@exemplo.com" /></label>
+          <label>Senha <input id="cadSenha" type="password" required placeholder="minimo 4 caracteres" /></label>
+          <button class="principal">Criar usuario</button>
+        </form>
+        <form id="formLogin" class="box">
+          <h3>Entrar</h3>
+          <label>Email <input id="loginEmail" type="email" required /></label>
+          <label>Senha <input id="loginSenha" type="password" required /></label>
+          <button class="principal">Entrar</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="form" class="page protegida">
+      <div class="linha-topo">
+        <div>
+          <h2 id="tituloForm">Cadastrar evento</h2>
+          <p class="sub">Campos obrigatorios: evento e responsavel. Os vazios aparecem como N/A.</p>
+        </div>
+        <button id="cancelar" class="leve escondido">Cancelar edicao</button>
+      </div>
+      <form id="formEvento" class="box">
+        <input id="eventoId" type="hidden" />
+        <div class="grid2">
+          <label>Nome do evento * <input id="nome" required placeholder="Ex.: Feira cultural" /></label>
+          <label>Responsavel * <input id="responsavel" required placeholder="Nome do responsavel" /></label>
+        </div>
+        <div class="grid3">
+          <label>Telefone <input id="telefone" placeholder="(00) 00000-0000" /></label>
+          <label>Data <input id="data" type="date" /></label>
+          <label>Status <select id="status"><option>Planejando</option><option>Confirmado</option><option>Finalizado</option></select></label>
+        </div>
+        <label>Local <input id="local" placeholder="Local do evento" /></label>
+        <label>Imagem da decoracao por IA ou URL <input id="imagem" placeholder="https://..." /></label>
+        <button class="principal">Salvar e listar</button>
+      </form>
+    </section>
+
+    <section id="list" class="page protegida">
+      <div class="linha-topo">
+        <div><h2>Eventos cadastrados</h2><p id="resumo" class="sub">Nenhum evento cadastrado.</p></div>
+        <button class="principal" data-page="form">+ Novo evento</button>
+      </div>
+      <input id="busca" class="busca" placeholder="Buscar por nome, responsavel ou local" />
+      <div class="tabela-wrap">
+        <table>
+          <thead><tr><th>Evento</th><th>Responsavel</th><th>Telefone</th><th>Data</th><th>Local</th><th>Imagem</th><th>Acoes</th></tr></thead>
+          <tbody id="lista"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
