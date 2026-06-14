@@ -172,3 +172,10 @@ a { color: #4b0c86; font-weight: 700; }
 
   .linha-topo button { margin-top: 12px; }
 }
+
+.rodape{
+  text-align:center;
+  padding:15px;
+  margin-top:30px;
+  color:#666;
+}
