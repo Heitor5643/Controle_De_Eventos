@@ -71,6 +71,19 @@
           <label>Status <select id="status"><option>Planejando</option><option>Confirmado</option><option>Finalizado</option></select></label>
         </div>
         <label>Local <input id="local" placeholder="Local do evento" /></label>
+        <label>
+                Convidados
+        <input
+               id="convidado"
+              placeholder="Digite o nome do convidado"
+  >     </label>
+        <button
+          type="button"
+          id="addConvidado"
+          class="leve">
+          + Adicionar Convidado
+        </button>
+        <ul id="listaConvidados"></ul>
         <label>Imagem da decoracao por IA ou URL <input id="imagem" placeholder="https://..." /></label>
         <button class="principal">Salvar e listar</button>
       </form>

@@ -3,6 +3,7 @@ const K_SESSION = 'ef_session';
 const K_EVENTS = 'ef_events';
 const $ = (id) => document.getElementById(id);
 let eventos = ler(K_EVENTS, []);
+let convidados = [];
 
 function ler(chave, padrao) {
   try { return JSON.parse(localStorage.getItem(chave)) || padrao; }
@@ -84,6 +85,7 @@ function dadosForm() {
     data: $('data').value,
     status: $('status').value,
     local: $('local').value.trim(),
+    convidados:[...convidados],
     imagem: $('imagem').value.trim(),
     atualizadoEm: new Date().toISOString(),
   };
@@ -100,14 +102,17 @@ $('formEvento').onsubmit = (e) => {
   limparForm();
   aviso('Evento salvo.');
   ir('list');
+  
 };
 
 function limparForm() {
   $('formEvento').reset();
   $('eventoId').value = '';
   $('tituloForm').textContent = 'Cadastrar evento';
+  convidados = [];
+  renderConvidados();
   $('cancelar').classList.add('escondido');
-}
+} 
 $('cancelar').onclick = limparForm;
 
 function editar(id) {
@@ -174,6 +179,11 @@ function linha(ev){
         </p>
 
         <p class="card-info">
+        👥 <strong>Convidados:</strong>
+          ${ev.convidados?.length || 0}
+        </p>
+
+        <p class="card-info">
           📍 <strong>Local:</strong>
           ${nulo(ev.local)}
         </p>
@@ -199,6 +209,50 @@ function linha(ev){
   `;
 }
 }
+document
+.getElementById("addConvidado")
+.onclick = () => {
+
+  const campo =
+  document.getElementById("convidado");
+
+  const nome =
+  campo.value.trim();
+
+  if(!nome) return;
+
+  convidados.push(nome);
+
+  campo.value = "";
+
+  renderConvidados();
+};
+
+function renderConvidados(){
+
+  document.getElementById(
+    "listaConvidados"
+  ).innerHTML = convidados
+  .map((nome,index)=>`
+    <li>
+      ${nome}
+      <button
+        type="button"
+        onclick="removerConvidado(${index})">
+        ❌
+      </button>
+    </li>
+  `)
+  .join("");
+}
+
+function removerConvidado(index){
+
+  convidados.splice(index,1);
+
+  renderConvidados();
+}
+
 $('busca').oninput = render;
 atualizarMenu();
 ir(usuario() ? 'list' : 'home'); 

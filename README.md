@@ -63,7 +63,12 @@ Após a conclusão dos requisitos obrigatórios do trabalho, foram realizadas al
 - Implementação de cards como visualização de eventos.
 - Inclusão de um pre visualizador de imagens
 
-Essas melhorias foram desenvolvidas com foco em usabilidade, organização visual e experiência do usuário, sem alterar as funcionalidades principais do CRUD.
+### Lista de Convidados
+
+- Implementada funcionalidade de gerenciamento de convidados.
+- Permite adicionar e remover convidados durante o cadastro do evento.
+- Os convidados ficam armazenados juntamente com os dados do evento no LocalStorage.
+- Exibição da quantidade e dos nomes dos convidados na visualização dos eventos.
 
 ## 📂 Estrutura de Arquivos
 
