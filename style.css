@@ -239,3 +239,85 @@ a { color: #4b0c86; font-weight: 700; }
   color:#666;
 }
 
+.eventos-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(350px,1fr));
+    gap:20px;
+}
+
+.card-evento{
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    transition:.3s;
+    border:1px solid #eee;
+}
+
+.card-evento:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 30px rgba(0,0,0,.15);
+}
+
+.card-evento img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.card-conteudo{
+    padding:18px;
+}
+
+.card-conteudo h3{
+    margin-bottom:12px;
+    color:#400999;
+}
+
+.card-info{
+    margin:8px 0;
+}
+
+.card-status{
+    display:inline-block;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:bold;
+    margin-top:8px;
+}
+
+.status-planejando{
+    background:#fff3cd;
+    color:#856404;
+}
+
+.status-confirmado{
+    background:#d4edda;
+    color:#155724;
+}
+
+.status-finalizado{
+    background:#d1ecf1;
+    color:#0c5460;
+}
+
+.card-acoes{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+}
+
+.btn-editar{
+    flex:1;
+    background:#400999;
+    color:white;
+}
+
+.btn-excluir{
+    flex:1;
+    background:#dc3545;
+    color:white;
+}
+
+

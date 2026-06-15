@@ -147,67 +147,68 @@ lista.length
 : '<p>Nenhum evento encontrado.</p>';
 function linha(ev){
 
-  const imagem =
+    const imagem =
     ev.imagem ||
-    "https://via.placeholder.com/400x200?text=Evento";
+    "https://via.placeholder.com/400x220?text=Evento";
 
-  return `
-    <div class="card-evento">
+    const classeStatus =
+        ev.status === "Planejando"
+        ? "status-planejando"
+        : ev.status === "Confirmado"
+        ? "status-confirmado"
+        : "status-finalizado";
 
-      <img
-        src="${imagem}"
-        alt="${ev.nome}"
-      >
+    return `
+        <div class="card-evento">
 
-      <div class="card-conteudo">
+            <img src="${imagem}" alt="${ev.nome}">
 
-        <h3>${ev.nome}</h3>
+            <div class="card-conteudo">
 
-        <p class="card-info">
-          👤 <strong>Responsável:</strong>
-          ${ev.responsavel}
-        </p>
+                <h3>${ev.nome}</h3>
 
-        <p class="card-info">
-          📞 <strong>Telefone:</strong>
-          ${nulo(ev.telefone)}
-        </p>
+                <p class="card-info">
+                    👤 ${ev.responsavel}
+                </p>
 
-        <p class="card-info">
-          📅 <strong>Data:</strong>
-          ${dataBR(ev.data)}
-        </p>
+                <p class="card-info">
+                    📞 ${nulo(ev.telefone)}
+                </p>
 
-        <p class="card-info">
-        👥 <strong>Convidados:</strong>
-          ${ev.convidados?.length || 0}
-        </p>
+                <p class="card-info">
+                    📅 ${dataBR(ev.data)}
+                </p>
 
-        <p class="card-info">
-          📍 <strong>Local:</strong>
-          ${nulo(ev.local)}
-        </p>
+                <p class="card-info">
+                    📍 ${nulo(ev.local)}
+                </p>
 
-        <p class="card-info">
-          🎯 <strong>Status:</strong>
-          ${ev.status}
-        </p>
+                <span class="card-status ${classeStatus}">
+                    ${ev.status}
+                </span>
 
-        <div class="card-acoes">
-          <button onclick="editar('${ev.id}')">
-            ✏️ Editar
-          </button>
+                <div class="card-acoes">
 
-          <button onclick="excluir('${ev.id}')">
-            🗑️ Excluir
-          </button>
+                    <button
+                        class="btn-editar"
+                        onclick="editar('${ev.id}')">
+                        ✏️ Editar
+                    </button>
+
+                    <button
+                        class="btn-excluir"
+                        onclick="excluir('${ev.id}')">
+                        🗑️ Excluir
+                    </button>
+
+                </div>
+
+            </div>
+
         </div>
-
-      </div>
-
-    </div>
-  `;
+    `;
 }
+
 }
 document
 .getElementById("addConvidado")
@@ -252,6 +253,8 @@ function removerConvidado(index){
 
   renderConvidados();
 }
+
+
 
 $('busca').oninput = render;
 atualizarMenu();
