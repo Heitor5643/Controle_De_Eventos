@@ -11,119 +11,88 @@
     <strong>EventFlow</strong>
     <small>Grupo 8 - Controle de Eventos</small>
     <button data-page="home">Inicio</button>
-    <button class="guest" data-page="login">Login</button>
-    <button class="auth" data-page="form">Cadastrar</button>
+    <!-- Botões para login e cadastro de usuário (guest) -->
+    <button class="guest" data-page="login" onclick="setAba('login')">Login</button>
+    <button class="guest" data-page="login" onclick="setAba('cadastro')">Criar conta</button>
+    <!-- Botões para eventos (auth) -->
+    <button class="auth" data-page="form">Novo Evento</button>
     <button class="auth" data-page="list">Listar</button>
     <button class="auth sair" id="sair">Sair</button>
   </aside>
 
   <main>
-   <section id="home" class="page active">
+    <!-- HOME -->
+    <section id="home" class="page active">
+      <div class="hero">
+        <span class="tag">Trabalho II - Programação Web</span>
+        <h1>Gerencie Eventos com Facilidade</h1>
+        <p class="hero-texto">
+          Organize eventos, acompanhe responsáveis, gerencie convidados
+          e mantenha todas as informações em um único lugar.
+        </p>
+        <div class="hero-botoes">
+          <button class="principal" data-page="login" onclick="setAba('login')">
+            Acessar Sistema
+          </button>
+        </div>
+      </div>
+      <div class="cards">
+        <div><b>📅 Cadastro</b><span>Crie eventos rapidamente.</span></div>
+        <div><b>👥 Convidados</b><span>Gerencie participantes.</span></div>
+        <div><b>📝 Organização</b><span>Centralize informações.</span></div>
+        <div><b>📊 Controle</b><span>Acompanhe o status dos eventos.</span></div>
+      </div>
+      <div class="home-info">
+        <div class="info-box"><h3>🎯 Objetivo</h3><p>Facilitar o gerenciamento de eventos utilizando HTML, CSS, JavaScript e LocalStorage.</p></div>
+        <div class="info-box"><h3>⚡ Recursos</h3><p>Cadastro, edição, exclusão, login, controle de convidados e imagens.</p></div>
+        <div class="info-box"><h3>💾 Armazenamento</h3><p>Todos os dados são salvos localmente utilizando LocalStorage.</p></div>
+      </div>
+    </section>
 
-  <div class="hero">
-    <span class="tag">Trabalho II - Programação Web</span>
-
-    <h1>Gerencie Eventos com Facilidade</h1>
-
-    <p class="hero-texto">
-      Organize eventos, acompanhe responsáveis, gerencie convidados
-      e mantenha todas as informações em um único lugar.
-    </p>
-
-    <div class="hero-botoes">
-      <button class="principal" data-page="login">
-        Acessar Sistema
-      </button>
-    </div>
-  </div>
-
-  <div class="cards">
-
-    <div>
-      <b>📅 Cadastro</b>
-      <span>Crie eventos rapidamente.</span>
-    </div>
-
-    <div>
-      <b>👥 Convidados</b>
-      <span>Gerencie participantes.</span>
-    </div>
-
-    <div>
-      <b>📝 Organização</b>
-      <span>Centralize informações.</span>
-    </div>
-
-    <div>
-      <b>📊 Controle</b>
-      <span>Acompanhe o status dos eventos.</span>
-    </div>
-
-  </div>
-
-  <div class="home-info">
-
-    <div class="info-box">
-      <h3>🎯 Objetivo</h3>
-      <p>
-        Facilitar o gerenciamento de eventos utilizando
-        HTML, CSS, JavaScript e LocalStorage.
-      </p>
-    </div>
-
-    <div class="info-box">
-      <h3>⚡ Recursos</h3>
-      <p>
-        Cadastro, edição, exclusão, login,
-        controle de convidados e imagens.
-      </p>
-    </div>
-
-    <div class="info-box">
-      <h3>💾 Armazenamento</h3>
-      <p>
-        Todos os dados são salvos localmente
-        utilizando LocalStorage.
-      </p>
-    </div>
-
-  </div>
-
-</section>
-
+    <!-- LOGIN / CADASTRO (com abas) -->
     <section id="login" class="page">
-      <h2>Login</h2>
-      <p class="sub">Crie um usuario e use esses dados para entrar.</p>
-      <div class="grid2">
-        <form id="formCriar" class="box">
-          <h3>Cadastrar usuario</h3>
-          <label>Nome <input id="cadNome" required placeholder="Seu nome" /></label>
-          <label>Email <input id="cadEmail" type="email" required placeholder="email@exemplo.com" /></label>
-          <label>Senha <input id="cadSenha" type="password" required placeholder="minimo 4 caracteres" /></label>
-          <button class="principal">Criar usuario</button>
-        </form>
+      <h2>Acesso ao sistema</h2>
+      <div class="abas">
+        <button class="aba-btn ativa" data-aba="login" onclick="setAba('login')">Entrar</button>
+        <button class="aba-btn" data-aba="cadastro" onclick="setAba('cadastro')">Criar conta</button>
+      </div>
+
+      <!-- ABA LOGIN -->
+      <div id="aba-login" class="aba-conteudo ativa">
         <form id="formLogin" class="box">
           <h3>Entrar</h3>
-          <label>Email <input id="loginEmail" type="email" required /></label>
-          <label>Senha <input id="loginSenha" type="password" required /></label>
+          <label>Email <input id="loginEmail" type="email" required placeholder="email@exemplo.com" /></label>
+          <label>Senha <input id="loginSenha" type="password" required placeholder="Sua senha" /></label>
           <button class="principal">Entrar</button>
+        </form>
+      </div>
+
+      <!-- ABA CADASTRO -->
+      <div id="aba-cadastro" class="aba-conteudo">
+        <form id="formCriar" class="box">
+          <h3>Cadastrar usuário</h3>
+          <label>Nome <input id="cadNome" required placeholder="Seu nome" /></label>
+          <label>Email <input id="cadEmail" type="email" required placeholder="email@exemplo.com" /></label>
+          <label>Senha <input id="cadSenha" type="password" required placeholder="mínimo 4 caracteres" /></label>
+          <button class="principal">Criar conta</button>
         </form>
       </div>
     </section>
 
+    <!-- FORMULÁRIO DE EVENTO -->
     <section id="form" class="page protegida">
       <div class="linha-topo">
         <div>
           <h2 id="tituloForm">Cadastrar evento</h2>
-          <p class="sub">Campos obrigatorios: evento e responsavel. Os vazios aparecem como N/A.</p>
+          <p class="sub">Campos obrigatórios: evento e responsável. Os vazios aparecem como N/A.</p>
         </div>
-        <button id="cancelar" class="leve escondido">Cancelar edicao</button>
+        <button id="cancelar" class="leve escondido">Cancelar edição</button>
       </div>
       <form id="formEvento" class="box">
         <input id="eventoId" type="hidden" />
         <div class="grid2">
           <label>Nome do evento * <input id="nome" required placeholder="Ex.: Feira cultural" /></label>
-          <label>Responsavel * <input id="responsavel" required placeholder="Nome do responsavel" /></label>
+          <label>Responsável * <input id="responsavel" required placeholder="Nome do responsável" /></label>
         </div>
         <div class="grid3">
           <label>Telefone <input id="telefone" placeholder="(00) 00000-0000" /></label>
@@ -131,39 +100,28 @@
           <label>Status <select id="status"><option>Planejando</option><option>Confirmado</option><option>Finalizado</option></select></label>
         </div>
         <label>Local <input id="local" placeholder="Local do evento" /></label>
-        <label>
-                Convidados
-        <input
-               id="convidado"
-              placeholder="Digite o nome do convidado"
-  >     </label>
-        <button
-          type="button"
-          id="addConvidado"
-          class="leve">
-          + Adicionar Convidado
-        </button>
+        <label>Convidados <input id="convidado" placeholder="Digite o nome do convidado" /></label>
+        <button type="button" id="addConvidado" class="leve">+ Adicionar Convidado</button>
         <ul id="listaConvidados"></ul>
-        <label>Imagem da decoracao por IA ou URL <input id="imagem" placeholder="https://..." /></label>
+        <label>Imagem da decoração por IA ou URL <input id="imagem" placeholder="https://..." /></label>
         <button class="principal">Salvar e listar</button>
       </form>
     </section>
 
+    <!-- LISTAGEM DE EVENTOS -->
     <section id="list" class="page protegida">
       <div class="linha-topo">
         <div><h2>Eventos cadastrados</h2><p id="resumo" class="sub">Nenhum evento cadastrado.</p></div>
         <button class="principal" data-page="form">+ Novo evento</button>
       </div>
-      <input id="busca" class="busca" placeholder="Buscar por nome, responsavel ou local" />
+      <input id="busca" class="busca" placeholder="Buscar por nome, responsável ou local" />
       <div class="tabela-wrap">
         <div id="lista" class="eventos-grid"></div>
       </div>
     </section>
   </main>
 
-  <footer class="rodape">
-  Grupo 8 - Programação Web 2026
-</footer>
+  <footer class="rodape">Grupo 8 - Programação Web 2026</footer>
 
   <div id="toast" class="toast"></div>
   <script src="script.js"></script>

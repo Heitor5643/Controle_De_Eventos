@@ -259,3 +259,39 @@ function removerConvidado(index){
 $('busca').oninput = render;
 atualizarMenu();
 ir(usuario() ? 'list' : 'home'); 
+// ... (código existente) ...
+
+// ===== CONTROLE DE ABAS =====
+function setAba(aba) {
+  // Esconde todas as abas
+  document.querySelectorAll('.aba-conteudo').forEach(el => el.classList.remove('ativa'));
+  // Mostra a aba desejada
+  const alvo = document.getElementById(`aba-${aba}`);
+  if (alvo) alvo.classList.add('ativa');
+
+  // Atualiza os botões de aba
+  document.querySelectorAll('.aba-btn').forEach(btn => {
+    btn.classList.toggle('ativa', btn.dataset.aba === aba);
+  });
+}
+
+// Quando a página de login for carregada, ativar a aba 'login' por padrão
+// (A função ir() já cuida de mostrar a seção, mas precisamos garantir que a aba correta seja exibida)
+// Para isso, modificamos a função ir() para, se a página for 'login', ativar a aba 'login'.
+// Mas como os botões do menu já chamam setAba, basta garantir que ao ir para login sem especificar, 
+// a aba login seja ativa. Vamos fazer isso na função ir().
+
+const originalIr = ir;
+ir = function(pagina) {
+  // Chama a função original
+  originalIr(pagina);
+  // Se a página for login, ativa a aba 'login' (a menos que já tenha sido definida por um onclick)
+  if (pagina === 'login') {
+    // Verifica se alguma aba está ativa, senão ativa a login
+    const ativa = document.querySelector('.aba-conteudo.ativa');
+    if (!ativa) {
+      setAba('login');
+    }
+  }
+};
+
